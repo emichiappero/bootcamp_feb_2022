@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+
+    <!-- <style>
+        body{
+            color:rgb(74, 139, 0);
+        }
+    </style> -->
+</head>
+<body>
+    
+    <h1 >Mi primer formulario</h1>
+
+    <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius impedit dolorem rerum labore quasi nesciunt, voluptas voluptate ipsa ad eveniet omnis autem non assumenda sequi aperiam id magni quidem architecto.</p>
+
+
+
+    <form action="formulario.php" method="post">
+        <input type="text" minlength="3"  placeholder="Ingrese su nombre" name="nombre" >
+        <input type="email" placeholder="Ingrese su email" name="email" disabled class="violeta" >
+        <input type="password" placeholder="Ingrse su contraseña" name="pass" >
+        <input type="number" min="0" step="15" placeholder="Ingrese su edad" name="edad" class="externo interno">
+        <input type="date">
+        <input type="time">
+        <input type="url" placeholder="URL" required>
+        <input type="color">
+        <br>
+        <input type="file" placeholder="Seleccione la imagen">
+        <br>
+        <textarea cols="20" rows="4" placeholder="Ingrese su consulta" disabled ></textarea>
+        <hr>
+        <input type="checkbox" checked> Acepto Terminos y Condiciones
+        <br>
+        <input type="radio" name="sexo" value="masculino"> <strong> Masculino</strong>
+        <input type="radio" name="sexo" checked value="F" > Femenino
+        <input type="radio" name="sexo" value="No_contesta"> Prefiero no decirlo
+        <br>
+        <select name="color_preferido">
+            <option value="rojo">Rojo</option>
+            <option value="blue">Azul</option>
+            <option value="color3" selected>Verde</option>
+        </select>
+        <br><br>
+        <button type="button" class="violeta grande">Botón normal</button>
+        <button type="reset" class="interno">Botón Borrar</button>
+        <button type="submit">Botón Enviar</button>
+
+
+    </form>
+    
+    <p class="violeta grande" id="parrafo2" style="background-color: aqua;">Este es otro parrafo</p>
+
+</body>
+</html>
+
