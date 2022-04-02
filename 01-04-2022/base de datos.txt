@@ -44,6 +44,9 @@ EJEMPLO
 - Obtener docunentos cuyo ID sea igual a :
    { _id: ObjectId('62466fe7c1233ba7045a9d4f') }
 
+- Obtener documentos que EXISTE el campo marca:
+  { marca: { $exists: true } }
+
 - Obtener documentos con SKU terminados en 789
     { sku: { $regex: /789$/ } }
 
@@ -60,4 +63,17 @@ EJEMPLO
  Ejemplo de OR
   { status: "A", $or: [ { qty: { $lt: 30 } }, { item: /^p/ } ] }
 
+
+
+
+Ejericio:
+- Alquiler de autos
+- Crear la colección correspondiente (sólo una)
+- Insertar al menos 5 documentos (con los datos necesarios)
+- CONSULTAS:
+  - buscar documentos que el auto sea marca: "Peugeot" 
+  - buscar documentos que el el total (precio) sea mayor a 10000 o que el cliente exista, ordenar por precio de menor a mayor
+  - buscar documentos que fecha de alquiler sea del 2022 (usar regex)
+  - buscar todos los documentos de un cliente en particular, mostrar sólo el campo total. 
+  - buscar documentos que el auto alquilado NO sea "Audi" y SI sea "Fiat" o "Chevrolet" o "Ford"
 
