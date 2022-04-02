@@ -1,0 +1,63 @@
+
+OPERADORES MATEMÁTICOS
+
+$eq: igual que (equal)
+$ne: distinto de (not equal)
+$gt: valores mayores que (greater than)
+$gte: valores mayores o iguales que (greater than or equal)
+$lt: valores menores que (lower than)
+$lte: valores menores o iguales que (lower than or equal)
+
+$in: sus valores se encuentran dentro del array especificado. 
+     Por ejemplo: { "pais": { $in: ["España", "Francia"] }} mostrará todos los documentos 
+     cuyo campo pais sea España o Francia
+
+$nin: operación contraria a $in, obtiene los documentos cuyo valor NO esté en el array
+
+
+EJEMPLO
+{ key: value }
+
+{ marca: "algo" }
+
+{ precio: { $gte : 1000 } }
+
+{ <campo1>: { <operador1>: <valor1> }, ... }
+
+{ edad: { $gt: 30 } }
+
+****************************************
+
+ CONSULTAS
+ - Obtener documentos que campo nombre sea "Andrea Le"
+    { nombre: "Andrea Le" }
+
+ - Obtener documentos que nombre NO sea "Andrea Le" 
+    { nombre: { $ne: "Andrea Le" } }
+
+- Obtener documentos donde cursos sea menor a 3
+    { cursos: { $lte: 3 } }
+
+- Obtener documentos que al menos una de las notas sea mayor a 4.5 y menor a 5 
+    { notas: { $elemMatch: { $gt: 4.5, $lt: 5 } } }
+
+- Obtener docunentos cuyo ID sea igual a :
+   { _id: ObjectId('62466fe7c1233ba7045a9d4f') }
+
+- Obtener documentos con SKU terminados en 789
+    { sku: { $regex: /789$/ } }
+
+- Documentos con SKU que comienzan con ABC (no importa Mayúsculas o Minúsuclas)
+    { sku: { $regex: /^ABC/i } }
+
+- Documentos que en descripción contiene la letea S
+    { descripcion: { $regex: /S/ } }
+
+
+ OR
+  { $or: [{ marca: "Apple "},{ nombre: "Emiliano" },{ edad: { $eq: 30 }}] }
+
+ Ejemplo de OR
+  { status: "A", $or: [ { qty: { $lt: 30 } }, { item: /^p/ } ] }
+
+
