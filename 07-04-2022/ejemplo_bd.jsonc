@@ -1,0 +1,116 @@
+//Productos
+//Clientes
+//Ventas
+
+
+//Colección: Productos
+{
+  "_id": "987AAB",
+  "nombre": "Celular",
+  "descripcion": "......",
+  "marca": "Apple",
+  "modelo": "Iphone 11",
+  "codigo": "CEL.APP.532",
+  "precio": 650.90,
+  "especificaciones": {
+    "memoria": "128Gb",
+    "color": "Gris Plata",
+    "pantalla": "12''",
+    "camara":{
+      "principal": "12Mpx",
+      "frontal": "10Mpx"
+    }
+  },
+  "stock": 10,
+  "accesorios":["cable USB", "cargador", "manos libres", "funda"]
+}
+
+
+//COLECCION: USUARIOS
+{
+  "_id": "555555",
+  "tipo": 112233, //hay 2 formas
+  "info_personal":{
+    "nombre": "Juana",
+    "apellido": "De Arco",
+    "correo": "juanaonfire@hotmail.com",
+    "tel": "12345666",
+    "direccion": {
+      "calle": "Av. Siemprevivas",
+      "numero": "456",
+      "apartarmento": "8 B",
+      "torre": "2",
+      "barrio": "mi barrio es el mejor",
+      "ciudad": "Armenia",
+      "estado": "Algo",
+      "pais": "Jamica",
+      "cp": "12312"
+    },
+    "fec_nac": "15/01/1985",
+    "sexo": "F",
+    "profesion": "Abogada",
+  },
+  "intereses": ["deportes", "ropa", "tecnología"],
+  "cuenta": {
+    "username": "Juana85",
+    "password": "hasdak1231kasjdla123.asd123",
+    "avatar": "miAvatar.png"
+  }
+}
+
+//COLECCION: Tipo
+{
+  "_id": 112233,
+  "tipo": "Persona",
+  "descripcion": "Personas físicas que compran en la tienda online"
+}
+
+{
+  "_id": 556677,
+  "tipo": "Empresa",
+  "descripcion": "Empresas que comprarn y pueden acceder a precio mayorista"
+}
+
+
+//COLECCIÓN: Ventas
+{
+  "fecha": "07/04/2022 23:35:45",
+  "cliente": "555555",
+  "productos":[
+    {
+      "producto": "987AAB",
+      "cantidad": 4,
+      "subtotal": 1653.90,
+      "iva": 5
+    },
+    {
+      "producto": "AAHH124",
+      "cantidad": 1,
+      "subtotal": 100,
+      "iva": 10
+    }
+  ],
+  "direccion_envio":{
+    "calle": "Av. Siemprevivas",
+    "numero": "456",
+    "apartarmento": "7 B",
+    "torre": "4",
+    "barrio": "mi barrio es el mejor",
+    "ciudad": "Armenia",
+    "estado": "Algo",
+    "pais": "Jamica",
+    "cp": "12312"
+  },
+  "pago": {
+    "metodo": "Tarjeta de Credito",
+    "numero_tarjeta": 12312312312312,
+    "codigo": 123,
+    "nombre_tarjeta": "Juan Perez",
+    "vencimiento": "14/10/2023"
+  },
+  "envio": true,
+  "costo_envio": 0,
+  "descuento": 25,
+  "total": 6233.90
+
+}
