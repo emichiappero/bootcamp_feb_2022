@@ -1,0 +1,7 @@
+Pasos:
+
+1) Creo la carpeta del proyecto
+2) Creo el archivo package.json (con "npm init")
+3) Instalo las dependecias o paquetes que necesite (npm install express)
+4) Creo el archivo principal de JS (el que aclaramos en "main" del package.json)
+5) Empiezo a programar
