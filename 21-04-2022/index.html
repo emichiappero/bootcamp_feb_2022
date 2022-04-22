@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <form id="form">
+    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">
+    <input type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido">
+    <button type="submit" id="boton">Enviar datos</button>
+  </form>
+
+  <div id="div_msj" style="display: none;">
+    <h2 id="msj_server"></h2>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+
+      $("#boton").click(function (e) {
+        e.preventDefault(); //Bloqueamos el comportamiento por defecto del elemento en cuestión
+
+        //var nom = $('#nombre').val();
+        //var ape = $('#apellido').val();
+
+        var datos_form = $('#form').serialize();
+
+        $.ajax({
+          url: '/ajax',
+          type: 'POST',
+          data: datos_form,
+          success: function (respuesta_servidor) {
+            $('#msj_server').html(respuesta_servidor);
+            $('#div_msj').show();
+          }
+        });
+
+      });
+
+    });
+  </script>
+
+</body>
+
+</html>
