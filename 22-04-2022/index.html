@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <input type="text" id="tarea">
+  <button id="enviar">Enviar</button>
+
+  <ul id="listado">
+    <li>hola</li>
+    <li>chau</li>
+  </ul>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+
+
+      $('#enviar').click(function () {
+        var input = $('#tarea').val();
+
+        $.ajax({
+          url: '/guardar',
+          type: 'post',
+          data: {
+            algo: input,
+            nombre: "Emiliano"
+          },
+          success: function (respuesta) {
+            alert(respuesta);
+            console.log(respuesta);
+            $('#listado').append('<li>' + respuesta + '</li>');
+          }
+        });
+
+      });
+
+    });
+  </script>
+
+</body>
+
+</html>
