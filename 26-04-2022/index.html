@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba Node + MongoDB</title>
+</head>
+
+<body>
+
+  <form id="miFormulario">
+    <input type="text" placeholder="Ingrese su Nombre" name="nombre">
+    <br>
+    <input type="text" placeholder="Ingtese su Apellido" name="apellido">
+    <br>
+    <input type="numer" placeholder="Edad" name="edad">
+    <br><br>
+    <button id="guardar">Guardar en BD</button>
+  </form>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('#guardar').click(function (e) {
+        e.preventDefault();
+
+        var datos = $('#miFormulario').serialize();
+
+        $.ajax({
+          url: '/guardarDatos',
+          type: 'POST',
+          data: datos,
+          success: function (respuesta) {
+            console.log(respuesta);
+          }
+        });
+
+      });
+    });
+  </script>
+
+</body>
+
+</html>
