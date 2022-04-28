@@ -8,9 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //conectarnos con la base de dato
 mongoose
-  .connect(
-    "mongodb+srv://emichiappero:lalala123@cluster0.hl2u8.mongodb.net/BDPruebaNode?retryWrites=true&w=majority"
-  )
+  .connect("__STRING_DE_CONEXION__")
   .then(function (db) {
     console.log("Conectado a la base de datos!!!");
   })
