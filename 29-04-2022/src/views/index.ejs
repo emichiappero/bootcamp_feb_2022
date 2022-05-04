@@ -1,25 +1,6 @@
 <%- include('_header.ejs') %>
 
 <div>
-  <h1><%= titulo %></h1>
-
-  <form action="/tarea" method="POST">
-    <input type="text" placeholder="Nombre de la Tarea" name="nombre">
-    <br><br>
-    <textarea name="descripcion" cols="30" rows="10" placeholder="Descripción de la Tarea"></textarea>
-    <br><br>
-    <select name="prioridad">
-      <option value="alta">Alta</option>
-      <option value="media">Media</option>
-      <option value="baja">Baja</option>
-    </select>
-    <br> <br>
-    <button type="submit">Guardar Tarea</button>
-  </form>
-
-</div>
-<hr>
-<div>
   <table border="1">
     <thead>
       <th>ID</th>
@@ -38,14 +19,63 @@
         <td><%= tareas[i].prioridad %></td>
         <td><%= tareas[i].estado %></td>
         <td>
-          <a href="">[ Modificar ]</a>
-          <a href="">[ Eliminar ]</a>
+          <a href="/modificar/<%= tareas[i]._id %>">[ Modificar ]</a>
+          <a href="/eliminar/<%= tareas[i]._id %>">[ Eliminar ]</a>
         </td>
       </tr>
       <% } %>
     </tbody>
   </table>
 </div>
+<br><br>
+<hr>
+<br>
+<% if(nuevo == true){ %>
+<!-- Aca va el codigo para CREAR una Tarea -->
+<div>
+  <h1><%= titulo %></h1>
+
+  <form action="/tarea" method="POST">
+    <input type="text" placeholder="Nombre de la Tarea" name="nombre">
+    <br><br>
+    <textarea name="descripcion" cols="30" rows="10" placeholder="Descripción de la Tarea"></textarea>
+    <br><br>
+    <select name="prioridad">
+      <option value="alta">Alta</option>
+      <option value="media">Media</option>
+      <option value="baja">Baja</option>
+    </select>
+    <br> <br>
+    <button type="submit">Guardar Tarea</button>
+  </form>
+
+</div>
+
+<% }else{ %>
+<!-- Acá va el código para EDITAR una Tarea -->
+<div>
+  <h1><%= titulo %></h1>
+
+  <form action="/modificar/<%= doc._id %>" method="POST">
+    <input type="text" placeholder="Nombre de la Tarea" name="nombre" value="<%= doc.nombre %>">
+    <br><br>
+    <textarea name="descripcion" cols="30" rows="10"
+      placeholder="Descripción de la Tarea"><%= doc.descripcion %></textarea>
+    <br><br>
+    <select name="prioridad">
+      <option <%= (doc.prioridad == 'alta')?'selected':'' %> value="alta">Alta</option>
+      <option <%= (doc.prioridad == 'media')?'selected':'' %> value="media">Media</option>
+      <option <%= (doc.prioridad == 'baja')?'selected':'' %> value="baja">Baja</option>
+    </select>
+    <br> <br>
+    <button type="submit">Modificar Tarea</button>
+  </form>
+
+</div>
+
+<% } %>
+
+
 
 
 <%- include('_footer.ejs') %>
