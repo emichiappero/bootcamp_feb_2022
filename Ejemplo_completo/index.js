@@ -3,10 +3,10 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 
+require("dotenv").config();
+
 mongoose
-  .connect(
-    "mongodb+srv://emichiappero:lalala123@cluster0.hl2u8.mongodb.net/ejemplo_completo?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGO_STRING_CONNECTION)
   .then(function (db) {
     console.log("Conexión establecida correctamente");
   })
