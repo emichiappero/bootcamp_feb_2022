@@ -1,0 +1,45 @@
+<%- include('_header.ejs') %>
+
+<%- include('_navbar') %>
+
+<div class="container">
+
+  <h1 class="mt-5 mb-5">Mostrando el producto: <%= p._id %></h1>
+
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="<%= p.imagen %>" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <p class="card-text"><span class="badge bg-light text-dark"><%= p.categoria %></span></p>
+          <h1 class="card-title"><%= p.producto %></h1>
+          <p class="card-text"><%= p.descripcion %></p>
+          <h3 class="card-text">$ <%= p.precio %></h3>
+
+          <form method="POST" action="/pedido">
+            <!-- Envío información del producto (id, nombre y precio) -->
+            <input type="hidden" name="id_producto" value="<%= p._id %>">
+            <input type="hidden" name="nombre_producto" value="<%= p.producto %>">
+            <input type="hidden" name="precio_unitario" value="<%= p.precio %>">
+
+            <div class="row g-3 align-items-center border-top mt-4 pt-4">
+              <div class="col-auto">
+                <input type="number" class="form-control" min="1" max="100" value="1" name="cantidad">
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-outline-success">Comprar</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<%- include('_footer.ejs') %>
