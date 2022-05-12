@@ -19,18 +19,24 @@
             Categorías
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Celulares</a></li>
-            <li><a class="dropdown-item" href="#">Smart TV</a></li>
-            <li><a class="dropdown-item" href="#">Notebooks</a></li>
+            <li><a class="dropdown-item" href="/categoria/celular">Celulares</a></li>
+            <li><a class="dropdown-item" href="/categoria/televisor">Smart TV</a></li>
+            <li><a class="dropdown-item" href="/categoria/notebooks">Notebooks</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Todas</a></li>
+            <li><a class="dropdown-item" href="/">Todas</a></li>
           </ul>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+      <form class="d-flex" method="POST" action="/buscar">
+        <select class="form-select" name="filtro">
+          <option selected>Buscar por...</option>
+          <option value="prod">Producto</option>
+          <option value="precio">Precio</option>
+          <option value="cate">Categoría</option>
+        </select>
+        <input class="form-control me-2" type="search" placeholder="Buscar" name="busqueda">
         <button class="btn btn-outline-info" type="submit">Buscar</button>
       </form>
     </div>

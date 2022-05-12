@@ -3,7 +3,11 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 
+//Incluimos el paquete dotenv, para utilizarlo, pero NO se sube al repositorio
 require("dotenv").config();
+
+//En el archivo .env hay una variable llamada OTRA_VARIABLE
+console.log(process.env.OTRA_VARIABLE);
 
 mongoose
   .connect(process.env.MONGO_STRING_CONNECTION)
@@ -95,6 +99,57 @@ app.post("/pedido", async function (req, res) {
 app.get("/carrito", async function (req, res) {
   var documentos = await model_order.find();
   res.render("carrito", { pedidos: documentos });
+});
+
+//Ruta para ELIMINAR UN PEDIDO
+app.get("/eliminar/:id_pedido", async function (req, res) {
+  var id = req.params.id_pedido;
+  await model_order.findByIdAndRemove(id);
+  res.redirect("/carrito");
+});
+
+//Ruta para Filtrar por CATEGORÍA
+app.get("/categoria/:cat", async function (req, res) {
+  var categ = req.params.cat;
+  var prods = await model_product.find({ categoria: categ });
+  res.render("index", {
+    productos: prods,
+    mostrar_msj: false,
+  });
+});
+
+//Ruta para filtrar los resultados de la busqueda
+app.post("/buscar", async function (req, res) {
+  var filtro = req.body.filtro;
+  var valor = req.body.busqueda;
+
+  var obj;
+
+  //productos.find({ titulo: { $regex: /abc/i } })
+
+  if (filtro == "prod") {
+    obj = { producto: { $in: [new RegExp(`${valor}`, "i")] } };
+  } else if (filtro == "precio") {
+    obj = { precio: { $lte: parseInt(valor) } };
+  } else if (filtro == "cate") {
+    obj = { categoria: { $regex: valor, $options: "$i" } };
+  } else {
+    //Ya vemos
+    // coleccion.find({ $or: [{},{}] })
+    obj = {
+      $or: [
+        { producto: { $regex: valor, $options: "$i" } },
+        { descripcion: { $regex: valor, $options: "$i" } },
+        { categoria: { $regex: valor, $options: "$i" } },
+      ],
+    };
+  }
+
+  var prods = await model_product.find(obj).sort({ precio: -1 });
+  res.render("index", {
+    productos: prods,
+    mostrar_msj: false,
+  });
 });
 
 app.listen(3000);

@@ -1,0 +1,2 @@
+MONGO_STRING_CONNECTION = aquí va su string de conexión con mongo
+OTRA_VARIABLE = aquí va otra cosa
