@@ -1,0 +1,57 @@
+<p>Nuestro componente</p>
+
+<h2>Listado de Videos</h2>
+<table border="1">
+  <thead>
+    <th>Titulo</th>
+    <th>Imagen</th>
+    <th>URL</th>
+    <th>Origen</th>
+    <th>Estado</th>
+    <th>Categoria</th>
+    <th>Fecha</th>
+    <th>...</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let v of videoServ.documentos">
+      <td>{{ v.titulo }}</td>
+      <td>{{ v.imagen }}</td>
+      <td>{{ v.url }}</td>
+      <td>{{ v.origen }}</td>
+      <td>{{ v.estado }}</td>
+      <td>{{ v.categoria }}</td>
+      <td>{{ v.fecha }}</td>
+      <td>
+        <button (click)="eliminarVideo(v._id)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br><br>
+
+<hr>
+
+<br>
+
+<h2>Guardar nuevo Video</h2>
+
+<form #miFormulario="ngForm" (ngSubmit)="agregarVideo(miFormulario)">
+
+  <input type="text" placeholder="Titulo" name="titulo" [(ngModel)]="videoServ.datosInput.titulo">
+  <br>
+  <input type="text" placeholder="URL" name="url" [(ngModel)]="videoServ.datosInput.url">
+  <br>
+  <input type="text" placeholder="Imagen" name="imagen" [(ngModel)]="videoServ.datosInput.imagen">
+  <br>
+  <input type="text" placeholder="Categoría" name="categoria" [(ngModel)]="videoServ.datosInput.categoria">
+  <br>
+  <input type=" text" placeholder="Origen" name="origen" [(ngModel)]="videoServ.datosInput.origen">
+  <br>
+  <input type="text" placeholder="Estado" name="estado" [(ngModel)]="videoServ.datosInput.estado">
+  <br><br>
+
+  <button type="submit">Guardar</button>
+  <button>Limpiar Formulario</button>
+
+</form>
